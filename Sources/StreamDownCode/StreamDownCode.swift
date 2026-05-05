@@ -80,7 +80,7 @@ struct SyntaxHighlighter {
     // MARK: - Entry point
 
     /// Tokenize the given source code for the specified language.
-    static func tokenize(code: String, language: CodeLanguage) -> [[SyntaxSpan]] {
+    static fileprivate func tokenize(code: String, language: CodeLanguage) -> [[SyntaxSpan]] {
         let keywords: Set<String>
         let lineCommentPrefix: String?
 
