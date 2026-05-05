@@ -14,9 +14,12 @@ enum AnthropicStreamClient {
         URLSession(configuration: .default, delegate: TrustAPIAnthropic(), delegateQueue: nil)
     }()
 
-    private final class TrustAPIAnthropic: NSObject, URLSessionDelegate {
+    // URLSession delivers HTTPS server-trust challenges at the *task* level,
+    // not the session level — so URLSessionTaskDelegate is the correct protocol.
+    private final class TrustAPIAnthropic: NSObject, URLSessionTaskDelegate {
         func urlSession(
             _ session: URLSession,
+            task: URLSessionTask,
             didReceive challenge: URLAuthenticationChallenge,
             completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
         ) {
