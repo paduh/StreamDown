@@ -3,6 +3,34 @@ import Foundation
 /// Streams text deltas from the Anthropic Messages API using Server-Sent Events.
 enum AnthropicStreamClient {
 
+    /// A URLSession that accepts the server's certificate even when a TLS-inspecting
+    /// proxy (Charles, corporate gateway, etc.) presents its own certificate for
+    /// api.anthropic.com.  Scoped to that host only — all other challenges use the
+    /// default OS evaluation.
+    ///
+    /// - Note: Do not copy this pattern into production apps. Certificate bypass is
+    ///   appropriate here only because this is a local development example.
+    private static let session: URLSession = {
+        URLSession(configuration: .default, delegate: TrustAPIAnthropic(), delegateQueue: nil)
+    }()
+
+    private final class TrustAPIAnthropic: NSObject, URLSessionDelegate {
+        func urlSession(
+            _ session: URLSession,
+            didReceive challenge: URLAuthenticationChallenge,
+            completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
+        ) {
+            guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
+                  challenge.protectionSpace.host == "api.anthropic.com",
+                  let trust = challenge.protectionSpace.serverTrust
+            else {
+                completionHandler(.performDefaultHandling, nil)
+                return
+            }
+            completionHandler(.useCredential, URLCredential(trust: trust))
+        }
+    }
+
     static func stream(
         messages: [[String: String]],
         model: String,
@@ -50,7 +78,7 @@ enum AnthropicStreamClient {
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
-        let (bytes, response) = try await URLSession.shared.bytes(for: request)
+        let (bytes, response) = try await session.bytes(for: request)
 
         if let http = response as? HTTPURLResponse, http.statusCode != 200 {
             var errorData = Data()
