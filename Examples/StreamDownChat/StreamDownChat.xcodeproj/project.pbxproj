@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA000040000000000000AAAA /* StreamDownChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000030000000000000AAAA /* StreamDownChatApp.swift */; };
+		AA000041000000000000AAAA /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000031000000000000AAAA /* ChatMessage.swift */; };
+		AA000042000000000000AAAA /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000032000000000000AAAA /* ChatStore.swift */; };
+		AA000043000000000000AAAA /* AnthropicStreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000033000000000000AAAA /* AnthropicStreamClient.swift */; };
+		AA000044000000000000AAAA /* SimulatedStreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000034000000000000AAAA /* SimulatedStreamClient.swift */; };
+		AA000045000000000000AAAA /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000035000000000000AAAA /* ChatView.swift */; };
+		AA000046000000000000AAAA /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000036000000000000AAAA /* MessageBubbleView.swift */; };
+		AA000047000000000000AAAA /* AssistantMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000037000000000000AAAA /* AssistantMessageView.swift */; };
+		AA000048000000000000AAAA /* InputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000038000000000000AAAA /* InputBarView.swift */; };
+		AA000049000000000000AAAA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000039000000000000AAAA /* SettingsView.swift */; };
+		AA00004A000000000000AAAA /* SSEParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00003A000000000000AAAA /* SSEParser.swift */; };
+		AA00004B000000000000AAAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00003B000000000000AAAA /* Assets.xcassets */; };
+		AA00004C000000000000AAAA /* StreamDown in Frameworks */ = {isa = PBXBuildFile; productRef = AA000051000000000000AAAA /* StreamDown */; };
+		AA00004D000000000000AAAA /* StreamDownCode in Frameworks */ = {isa = PBXBuildFile; productRef = AA000052000000000000AAAA /* StreamDownCode */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA000003000000000000AAAA /* StreamDownChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamDownChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA000030000000000000AAAA /* StreamDownChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDownChatApp.swift; sourceTree = "<group>"; };
+		AA000031000000000000AAAA /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		AA000032000000000000AAAA /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
+		AA000033000000000000AAAA /* AnthropicStreamClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicStreamClient.swift; sourceTree = "<group>"; };
+		AA000034000000000000AAAA /* SimulatedStreamClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedStreamClient.swift; sourceTree = "<group>"; };
+		AA000035000000000000AAAA /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		AA000036000000000000AAAA /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
+		AA000037000000000000AAAA /* AssistantMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantMessageView.swift; sourceTree = "<group>"; };
+		AA000038000000000000AAAA /* InputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarView.swift; sourceTree = "<group>"; };
+		AA000039000000000000AAAA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AA00003A000000000000AAAA /* SSEParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSEParser.swift; sourceTree = "<group>"; };
+		AA00003B000000000000AAAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA000012000000000000AAAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA00004C000000000000AAAA /* StreamDown in Frameworks */,
+				AA00004D000000000000AAAA /* StreamDownCode in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA000020000000000000AAAA /* root */ = {
+			isa = PBXGroup;
+			children = (
+				AA000021000000000000AAAA /* StreamDownChat */,
+				AA000025000000000000AAAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA000021000000000000AAAA /* StreamDownChat */ = {
+			isa = PBXGroup;
+			children = (
+				AA000030000000000000AAAA /* StreamDownChatApp.swift */,
+				AA000022000000000000AAAA /* Models */,
+				AA000023000000000000AAAA /* Views */,
+				AA000024000000000000AAAA /* Utilities */,
+				AA00003B000000000000AAAA /* Assets.xcassets */,
+			);
+			path = StreamDownChat;
+			sourceTree = "<group>";
+		};
+		AA000022000000000000AAAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA000031000000000000AAAA /* ChatMessage.swift */,
+				AA000032000000000000AAAA /* ChatStore.swift */,
+				AA000033000000000000AAAA /* AnthropicStreamClient.swift */,
+				AA000034000000000000AAAA /* SimulatedStreamClient.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA000023000000000000AAAA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA000035000000000000AAAA /* ChatView.swift */,
+				AA000036000000000000AAAA /* MessageBubbleView.swift */,
+				AA000037000000000000AAAA /* AssistantMessageView.swift */,
+				AA000038000000000000AAAA /* InputBarView.swift */,
+				AA000039000000000000AAAA /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA000024000000000000AAAA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA00003A000000000000AAAA /* SSEParser.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AA000025000000000000AAAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA000003000000000000AAAA /* StreamDownChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA000002000000000000AAAA /* StreamDownChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000065000000000000AAAA /* Build configuration list for PBXNativeTarget "StreamDownChat" */;
+			buildPhases = (
+				AA000010000000000000AAAA /* Sources */,
+				AA000012000000000000AAAA /* Frameworks */,
+				AA000011000000000000AAAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StreamDownChat;
+			packageProductDependencies = (
+				AA000051000000000000AAAA /* StreamDown */,
+				AA000052000000000000AAAA /* StreamDownCode */,
+			);
+			productName = StreamDownChat;
+			productReference = AA000003000000000000AAAA /* StreamDownChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA000001000000000000AAAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AA000002000000000000AAAA = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AA000064000000000000AAAA /* Build configuration list for PBXProject "StreamDownChat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA000020000000000000AAAA;
+			packageReferences = (
+				AA000050000000000000AAAA /* XCLocalSwiftPackageReference "../.." */,
+			);
+			productRefGroup = AA000025000000000000AAAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA000002000000000000AAAA /* StreamDownChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA000011000000000000AAAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA00004B000000000000AAAA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA000010000000000000AAAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000040000000000000AAAA /* StreamDownChatApp.swift in Sources */,
+				AA000041000000000000AAAA /* ChatMessage.swift in Sources */,
+				AA000042000000000000AAAA /* ChatStore.swift in Sources */,
+				AA000043000000000000AAAA /* AnthropicStreamClient.swift in Sources */,
+				AA000044000000000000AAAA /* SimulatedStreamClient.swift in Sources */,
+				AA000045000000000000AAAA /* ChatView.swift in Sources */,
+				AA000046000000000000AAAA /* MessageBubbleView.swift in Sources */,
+				AA000047000000000000AAAA /* AssistantMessageView.swift in Sources */,
+				AA000048000000000000AAAA /* InputBarView.swift in Sources */,
+				AA000049000000000000AAAA /* SettingsView.swift in Sources */,
+				AA00004A000000000000AAAA /* SSEParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA000060000000000000AAAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA000061000000000000AAAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA000062000000000000AAAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.streamdown.StreamDownChat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA000063000000000000AAAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.streamdown.StreamDownChat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA000064000000000000AAAA /* Build configuration list for PBXProject "StreamDownChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000060000000000000AAAA /* Debug */,
+				AA000061000000000000AAAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000065000000000000AAAA /* Build configuration list for PBXNativeTarget "StreamDownChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA000062000000000000AAAA /* Debug */,
+				AA000063000000000000AAAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		AA000050000000000000AAAA /* XCLocalSwiftPackageReference "../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA000051000000000000AAAA /* StreamDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000050000000000000AAAA /* XCLocalSwiftPackageReference "../.." */;
+			productName = StreamDown;
+		};
+		AA000052000000000000AAAA /* StreamDownCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000050000000000000AAAA /* XCLocalSwiftPackageReference "../.." */;
+			productName = StreamDownCode;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+	};
+	rootObject = AA000001000000000000AAAA /* Project object */;
+}
