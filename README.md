@@ -15,7 +15,9 @@ let view = StreamDownUIView()
 view.beginStreaming(myAsyncStream)
 ```
 
-<video src="Media/demo.mov" width="320" autoplay loop muted playsinline></video>
+<div align="center">
+  <img src="Media/demo.gif" width="300" alt="StreamDown streaming markdown demo" />
+</div>
 
 ---
 
