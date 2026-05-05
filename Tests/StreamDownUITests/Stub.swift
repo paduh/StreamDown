@@ -1,0 +1,2 @@
+// Stub test
+import XCTest
