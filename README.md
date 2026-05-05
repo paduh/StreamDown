@@ -15,6 +15,8 @@ let view = StreamDownUIView()
 view.beginStreaming(myAsyncStream)
 ```
 
+<video src="Media/demo.mov" width="320" autoplay loop muted playsinline></video>
+
 ---
 
 ## Why StreamDown
