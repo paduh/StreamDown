@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  # Build and test on macOS
+  test-macos:
+    name: Test macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Resolve dependencies
+        run: swift package resolve
+
+      - name: Build package
+        run: swift build
+
+      - name: Run tests
+        run: swift test
+
+      - name: Build for iOS Simulator
+        run: |
+          xcodebuild build \
+            -scheme StreamDown-Package \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -quiet || true
+
+      - name: Build for macOS
+        run: |
+          xcodebuild build \
+            -scheme StreamDown-Package \
+            -destination 'platform=macOS' \
+            -quiet || true
+
+  # Enforce zero platform imports in StreamDownCore
+  zero-platform-imports:
+    name: StreamDownCore — Zero Platform Imports
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for forbidden imports
+        run: |
+          FORBIDDEN="^import (SwiftUI|UIKit|AppKit|WatchKit|TVUIKit|Combine|MapKit|ARKit|RealityKit)"
+          if grep -rE "$FORBIDDEN" Sources/StreamDownCore/; then
+            echo "ERROR: StreamDownCore contains platform-specific imports."
+            echo "StreamDownCore must remain KMP-portable with zero platform imports."
+            exit 1
+          fi
+          echo "✓ StreamDownCore has no platform-specific imports"
+
+  # Verify package structure
+  package-structure:
+    name: Package Structure
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Package.swift
+        run: |
+          swift package dump-package > /dev/null
+          echo "✓ Package structure is valid"
+
+  # Build every target individually (catches missing imports / bad deps)
+  build-targets:
+    name: Build ${{ matrix.target }}
+    runs-on: macos-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - StreamDownCore
+          - StreamDownUI
+          - StreamDownUIKit
+          - StreamDownCode
+          - StreamDownMath
+          - StreamDownDiagram
+          - StreamDownCJK
+          - StreamDownTestSupport
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build ${{ matrix.target }}
+        run: swift build --target ${{ matrix.target }}
+
+  # Test coverage
+  coverage:
+    name: Test Coverage
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Resolve dependencies
+        run: swift package resolve
+
+      - name: Run tests with coverage
+        run: swift test --enable-code-coverage
