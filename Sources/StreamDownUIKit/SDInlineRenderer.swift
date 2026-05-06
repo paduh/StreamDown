@@ -227,7 +227,7 @@ extension SDInlineRenderer {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byWordWrapping
 
-        var baseAttrs: [NSAttributedString.Key: Any] = [
+        let baseAttrs: [NSAttributedString.Key: Any] = [
             .font: font,
             .foregroundColor: foreground,
             .paragraphStyle: paragraphStyle
