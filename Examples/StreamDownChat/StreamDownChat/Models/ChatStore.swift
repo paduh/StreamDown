@@ -78,6 +78,11 @@ final class ChatStore: ObservableObject {
                 if let idx = messages.firstIndex(where: { $0.id == assistantID }) {
                     messages[idx].content += delta
                 }
+                // Yield to the main run loop so SwiftUI gets one render cycle per token.
+                // Without this, a proxy that buffers the full response delivers all deltas
+                // in a single burst and objectWillChange coalesces them into one render,
+                // killing the per-token animation.
+                await Task.yield()
             }
 
             if let idx = messages.firstIndex(where: { $0.id == assistantID }) {
