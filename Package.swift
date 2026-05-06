@@ -39,20 +39,20 @@ let package = Package(
         .target(
             name: "StreamDownCode",
             dependencies: ["StreamDownCore", "StreamDownUI", "StreamDownUIKit"],
-            path: "Sources/StreamDownCode",
-            resources: [.process("Resources/grammars")]
+            path: "Sources/StreamDownCode"
+            // resources: [.process("Resources/grammars")] — restore when grammar files are added
         ),
         .target(
             name: "StreamDownMath",
             dependencies: ["StreamDownCore", "StreamDownUI", "StreamDownUIKit"],
-            path: "Sources/StreamDownMath",
-            resources: [.process("Resources/katex")]
+            path: "Sources/StreamDownMath"
+            // resources: [.process("Resources/katex")] — restore when KaTeX assets are bundled
         ),
         .target(
             name: "StreamDownDiagram",
             dependencies: ["StreamDownCore", "StreamDownUI", "StreamDownUIKit"],
-            path: "Sources/StreamDownDiagram",
-            resources: [.process("Resources/mermaid")]
+            path: "Sources/StreamDownDiagram"
+            // resources: [.process("Resources/mermaid")] — restore when Mermaid assets are bundled
         ),
         .target(
             name: "StreamDownCJK",

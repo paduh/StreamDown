@@ -23,7 +23,7 @@ view.beginStreaming(myAsyncStream)
 
 ## Why StreamDown
 
-Every existing iOS markdown library (`swift-markdown-ui`, `Textual`, `MarkdownView`) requires complete input before it can render. LLM responses arrive token-by-token, producing syntactically incomplete markdown mid-stream — an unclosed `**bold`, a code fence with no closing ` ``` `, a table mid-row. The industry workaround is plain text during streaming and formatted markdown only after completion.
+LLM responses arrive token-by-token, producing syntactically incomplete markdown mid-stream — an unclosed `**bold`, a code fence with no closing ` ``` `, a table mid-row. The industry workaround is plain text during streaming and formatted markdown only after completion.
 
 StreamDown solves this natively with an incremental parser that renders each construct as gracefully as possible while it is still arriving.
 

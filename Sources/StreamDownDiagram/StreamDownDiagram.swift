@@ -22,14 +22,9 @@ private func mermaidHTML(for source: String) -> String {
         .replacingOccurrences(of: "`",  with: "\\`")
         .replacingOccurrences(of: "$",  with: "\\$")
 
-    let scriptTag: String
-    if let jsURL = Bundle.module.url(forResource: "mermaid.min", withExtension: "js",
-                                      subdirectory: "mermaid") {
-        scriptTag = "<script src=\"\(jsURL.absoluteString)\"></script>"
-    } else {
-        // CDN fallback — usable during development when resources are not bundled.
-        scriptTag = "<script src=\"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js\"></script>"
-    }
+    // CDN fallback. When mermaid assets are added to Resources/mermaid/, restore
+    // the Bundle.module lookup here and re-add .process("Resources/mermaid") to Package.swift.
+    let scriptTag = "<script src=\"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js\"></script>"
 
     return """
     <!DOCTYPE html>
