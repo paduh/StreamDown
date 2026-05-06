@@ -22,23 +22,12 @@ private func katexHTML(for latex: String, displayMode: Bool) -> String {
         .replacingOccurrences(of: "`",  with: "\\`")
         .replacingOccurrences(of: "'",  with: "\\'")
 
-    // Attempt to locate bundled KaTeX resources.
-    let bundleBase: String
-    if let jsURL = Bundle.module.url(forResource: "katex.min", withExtension: "js",
-                                     subdirectory: "katex"),
-       let cssURL = Bundle.module.url(forResource: "katex.min", withExtension: "css",
-                                      subdirectory: "katex") {
-        bundleBase = """
-        <link rel="stylesheet" href="\(cssURL.absoluteString)">
-        <script src="\(jsURL.absoluteString)"></script>
-        """
-    } else {
-        // CDN fallback — usable during development.
-        bundleBase = """
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        """
-    }
+    // CDN fallback. When katex assets are added to Resources/katex/, restore
+    // the Bundle.module lookup here and re-add .process("Resources/katex") to Package.swift.
+    let bundleBase = """
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    """
 
     return """
     <!DOCTYPE html>
