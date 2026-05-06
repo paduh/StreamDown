@@ -90,7 +90,6 @@ private final class MathWebViewController: NSObject, WKScriptMessageHandler {
     var onHeightUpdate: ((CGFloat) -> Void)?
 
     override init() {
-        let config = WKWebViewConfiguration()
         let contentController = WKUserContentController()
         let userConfig = WKWebViewConfiguration()
         userConfig.userContentController = contentController

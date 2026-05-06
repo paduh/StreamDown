@@ -34,24 +34,15 @@ jobs:
           swift build --target StreamDownCJK
           swift build --target StreamDownTestSupport
 
-      - name: Run tests (macOS-compatible targets)
-        # StreamDownUITests and StreamDownSnapshotTests depend on UIKit — skip them here.
-        # They are covered by the iOS Simulator build job below.
-        run: swift test --filter StreamDownCoreTests
-
-      - name: Build all targets for iOS Simulator
+      - name: Build and test on iOS Simulator
+        # xcodebuild targets iOS Simulator where UIKit is available.
+        # swift test is not used here because --filter still builds ALL test targets,
+        # including StreamDownUITests/StreamDownSnapshotTests which depend on UIKit.
         run: |
-          xcodebuild build \
+          xcodebuild test \
             -scheme StreamDown-Package \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -quiet
-
-      - name: Build all targets for macOS (Designed for iPad)
-        run: |
-          xcodebuild build \
-            -scheme StreamDown-Package \
-            -destination 'platform=macOS,variant=Mac Catalyst' \
-            -quiet || true
 
   # Enforce zero platform imports in StreamDownCore
   zero-platform-imports:
@@ -143,5 +134,10 @@ jobs:
       - name: Resolve dependencies
         run: swift package resolve
 
-      - name: Run StreamDownCoreTests with coverage
-        run: swift test --filter StreamDownCoreTests --enable-code-coverage
+      - name: Run tests with coverage (iOS Simulator)
+        run: |
+          xcodebuild test \
+            -scheme StreamDown-Package \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -enableCodeCoverage YES \
+            -quiet

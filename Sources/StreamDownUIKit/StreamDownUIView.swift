@@ -478,7 +478,10 @@ public final class StreamDownUIView: UIView {
             let distanceFromBottom = sv.contentSize.height
                 - sv.contentOffset.y
                 - sv.bounds.height
-            self?.userHasScrolledUp = distanceFromBottom > 50
+            let scrolledUp = distanceFromBottom > 50
+            DispatchQueue.main.async { [weak self] in
+                self?.userHasScrolledUp = scrolledUp
+            }
         }
     }
 
