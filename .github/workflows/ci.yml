@@ -7,8 +7,15 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# UIKit is only available on iOS/tvOS, not on macOS when using plain `swift build`
+# (which targets the native macOS SDK). Any target that imports UIKit must be built
+# via xcodebuild targeting an iOS Simulator destination.
+#
+# macOS-native (swift build):  StreamDownCore, StreamDownUI, StreamDownCJK, StreamDownTestSupport
+# iOS-only (xcodebuild):       StreamDownUIKit, StreamDownCode, StreamDownMath, StreamDownDiagram
+
 jobs:
-  # Build and test on macOS
+  # Build macOS-compatible targets and run macOS-compatible tests
   test-macos:
     name: Test macOS
     runs-on: macos-latest
@@ -20,24 +27,30 @@ jobs:
       - name: Resolve dependencies
         run: swift package resolve
 
-      - name: Build package
-        run: swift build
+      - name: Build macOS-compatible targets
+        run: |
+          swift build --target StreamDownCore
+          swift build --target StreamDownUI
+          swift build --target StreamDownCJK
+          swift build --target StreamDownTestSupport
 
-      - name: Run tests
-        run: swift test
+      - name: Run tests (macOS-compatible targets)
+        # StreamDownUITests and StreamDownSnapshotTests depend on UIKit — skip them here.
+        # They are covered by the iOS Simulator build job below.
+        run: swift test --filter StreamDownCoreTests
 
-      - name: Build for iOS Simulator
+      - name: Build all targets for iOS Simulator
         run: |
           xcodebuild build \
             -scheme StreamDown-Package \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
-            -quiet || true
+            -quiet
 
-      - name: Build for macOS
+      - name: Build all targets for macOS (Designed for iPad)
         run: |
           xcodebuild build \
             -scheme StreamDown-Package \
-            -destination 'platform=macOS' \
+            -destination 'platform=macOS,variant=Mac Catalyst' \
             -quiet || true
 
   # Enforce zero platform imports in StreamDownCore
@@ -73,7 +86,8 @@ jobs:
           swift package dump-package > /dev/null
           echo "✓ Package structure is valid"
 
-  # Build every target individually (catches missing imports / bad deps)
+  # Build every target individually.
+  # macOS-native targets use `swift build`; UIKit-dependent targets use xcodebuild.
   build-targets:
     name: Build ${{ matrix.target }}
     runs-on: macos-latest
@@ -81,24 +95,43 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target:
-          - StreamDownCore
-          - StreamDownUI
-          - StreamDownUIKit
-          - StreamDownCode
-          - StreamDownMath
-          - StreamDownDiagram
-          - StreamDownCJK
-          - StreamDownTestSupport
+        include:
+          # macOS-native: swift build works because these targets have no UIKit dependency
+          - target: StreamDownCore
+            ios_only: false
+          - target: StreamDownUI
+            ios_only: false
+          - target: StreamDownCJK
+            ios_only: false
+          - target: StreamDownTestSupport
+            ios_only: false
+          # iOS-only: UIKit is not available on the macOS SDK used by `swift build`
+          - target: StreamDownUIKit
+            ios_only: true
+          - target: StreamDownCode
+            ios_only: true
+          - target: StreamDownMath
+            ios_only: true
+          - target: StreamDownDiagram
+            ios_only: true
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build ${{ matrix.target }}
+      - name: Build ${{ matrix.target }} (swift build)
+        if: ${{ !matrix.ios_only }}
         run: swift build --target ${{ matrix.target }}
 
-  # Test coverage
+      - name: Build ${{ matrix.target }} (xcodebuild iOS Simulator)
+        if: ${{ matrix.ios_only }}
+        run: |
+          xcodebuild build \
+            -scheme StreamDown-Package \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -quiet
+
+  # Core unit test coverage (macOS-compatible subset)
   coverage:
     name: Test Coverage
     runs-on: macos-latest
@@ -110,5 +143,5 @@ jobs:
       - name: Resolve dependencies
         run: swift package resolve
 
-      - name: Run tests with coverage
-        run: swift test --enable-code-coverage
+      - name: Run StreamDownCoreTests with coverage
+        run: swift test --filter StreamDownCoreTests --enable-code-coverage
